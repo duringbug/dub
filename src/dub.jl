@@ -7,5 +7,3 @@ function test()
 end
 
 end # module dub
-
-dub.test()
