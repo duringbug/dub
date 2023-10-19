@@ -1,8 +1,8 @@
 module dub
+include("factorize/cholesky.jl")
 
 function test()
-    using .factorize.cholesky
-    cholesky_result = cholesky([4 -1 -1; -1 4.25 4.25; 1 2.75 3.5])
+    cholesky_result = cholesky([4 -1 -1; -1 17//4 17//4; 1 11//4 7//2])
     println(cholesky_result)
 end
 
