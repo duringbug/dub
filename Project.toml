@@ -1,0 +1,4 @@
+name = "dub"
+uuid = "de904774-5c02-4959-881f-fd4b37145644"
+authors = ["duringbug <2034298621@qq.com>"]
+version = "0.1.0"
