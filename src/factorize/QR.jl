@@ -1,19 +1,18 @@
-"""
-function QR(A, qr_type::QRType)
-
-这个方法对A进行QR分解,返回矩阵Q与R
-
-Arguments:
-- `A`: 待分解的矩阵(M•N).
-- `qr_type`: 分解的方法: @enum QRType Householder GramSchmidt Givens.
- 
-Returns:
-QR分解的Q(M•M)与R(M•N)矩阵
-
-Examples:
-```
-QR([4 -1 -1; -1 17//4 17//4; 1 11//4 7//2], Givens)
-```
-"""
-struct QR{T<:Matrix{Number}}
+struct QR{T<:Number}
+    A::Matrix{T}
+    function QR{T}(A) where {T<:Number}
+        m, n = check_QR_matrix(A)
+        new{T}(A)
+    end
+    function QR(A::Matrix{T}) where {T<:Number}
+        m, n = check_QR_matrix(A)
+        new{T}(A)
+    end
+    function check_QR_matrix(A::Matrix{T}) where {T<:Number}
+        m, n = size(A)
+        if m < n
+            throw(ArgumentError("Matrix A must be m  n: $(size(A, 1)) < $(size(A, 2))"))
+        end
+        return m, n
+    end
 end
