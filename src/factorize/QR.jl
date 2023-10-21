@@ -1,5 +1,3 @@
-using LinearAlgebra
-
 """
 function QR(A, qr_type::QRType)
 
@@ -18,19 +16,4 @@ QR([4 -1 -1; -1 17//4 17//4; 1 11//4 7//2], Givens)
 ```
 """
 struct QR{T<:Matrix{Number}}
-    A::T
-    function QR()
-        m, n = size(A)
-        Q = I(m)
-        println(Q)
-        for j in 1:size(A, 2)
-            x = view(A, :, j)
-            for i in j+1:n
-                T = I(m)
-                T[j, j] = 3 // 5
-                T[i, i] = 4 // 5
-                println(x)
-            end
-        end
-    end
 end
