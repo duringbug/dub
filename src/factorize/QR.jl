@@ -1,16 +1,5 @@
-"""
-Householder: Householder 镜像变换
+using LinearAlgebra
 
-GramSchmidt: Gram-Schmidt 正交化
-
-Givens: Givens 旋转变换
-
-"""
-@enum QRType begin
-    Householder = 1
-    GramSchmidt = 2
-    Givens = 3
-end
 """
 function QR(A, qr_type::QRType)
 
@@ -28,11 +17,20 @@ Examples:
 QR([4 -1 -1; -1 17//4 17//4; 1 11//4 7//2], Givens)
 ```
 """
-function QR(A, qr_type::QRType)
-    if Int(qr_type) == 3
+struct QR{T<:Matrix{Number}}
+    A::T
+    function QR()
+        m, n = size(A)
+        Q = I(m)
+        println(Q)
         for j in 1:size(A, 2)
             x = view(A, :, j)
-            println(x)
+            for i in j+1:n
+                T = I(m)
+                T[j, j] = 3 // 5
+                T[i, i] = 4 // 5
+                println(x)
+            end
         end
     end
 end
