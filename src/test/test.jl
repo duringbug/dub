@@ -14,6 +14,7 @@ function test()
     println(lu.U)
     println(lu.L * lu.U)
     println(lu.L * lu.U == lu.A)
+
     qr = QR{Float64}([
         1.0 1.0 2.9
         2.0 0.0 3.4
@@ -24,4 +25,12 @@ function test()
     println(qr.R)
     println(qr.Q * qr.R)
     println(qr.Q * qr.R ≈ qr.A)
+
+    cholesky = Cholesky{Float64}([
+        4 -1 1
+        -1 4.25 2.75
+        1 2.75 3.5
+    ])
+    println(cholesky.R)
+    println(cholesky.R * cholesky.R' ≈ cholesky.A)
 end

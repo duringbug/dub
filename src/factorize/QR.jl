@@ -66,7 +66,7 @@ struct QR{T<:Number}
             x = A[i:m, i]
             alpha = sqrt(x' * x)
             x[1] = x[1] - alpha
-            w = x / sqrt(x' * x)
+            w = x / alpha
             W = zeros(m, m)
             W[i:m, i:m] = w * w'
             H = I - 2 * W
