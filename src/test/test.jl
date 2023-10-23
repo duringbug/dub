@@ -14,9 +14,12 @@ function test()
     println(lu.U)
     println(lu.L * lu.U)
     println(lu.L * lu.U == lu.A)
-    QR{Int32}([
-        1 1
-        2 0
-        2 1
+    qr = QR{Float64}([
+        1.0 1.0
+        2.0 0.0
+        2.0 1.0
     ])
+    println(qr.Q)
+    println(qr.R)
+    println(qr.Q * qr.R)
 end
